@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>succes</from-outcome>
+			<to-view-id>/accueil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>echec</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- ************************GESTION CLIENT******************************* -->
+	
+	<navigation-rule>
+		<from-view-id>/add.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>add</from-outcome>
+				<to-view-id>/add.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/update.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>update</from-outcome>
+				<to-view-id>/update.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/delete.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>delete</from-outcome>
+				<to-view-id>/delete.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/affiche.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>affiche</from-outcome>
+				<to-view-id>/affiche.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<!-- ************************GESTION PRODUIT******************************* -->
+	
+	<navigation-rule>
+		<from-view-id>/credit.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>credit</from-outcome>
+				<to-view-id>/credit.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/audit.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>audit</from-outcome>
+				<to-view-id>/audit.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/virement.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>virement</from-outcome>
+				<to-view-id>/virement.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/placement.xhtml</from-view-id>
+		<navigation-case>
+				<from-outcome>placement</from-outcome>
+				<to-view-id>/placement.xhtml</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+
+</faces-config>
