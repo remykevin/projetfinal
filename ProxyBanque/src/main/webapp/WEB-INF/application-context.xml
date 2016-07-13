@@ -40,8 +40,8 @@
 	      <property name="dataSource" ref="datasourceBean"/>
 	      
 	      <!-- les classes annotées -->
-	      <property name="annotatedClasses" >     
-	      		<value>fr.adaming.model.Conseiller</value>      		      		 		
+	      <property name="packagesToScan" >     
+	      		<value>fr.adaming.model</value>      		      		 		
 	      </property>
 	      
 	      
