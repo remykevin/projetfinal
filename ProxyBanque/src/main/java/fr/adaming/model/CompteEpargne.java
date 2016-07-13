@@ -2,7 +2,10 @@ package fr.adaming.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+
 public class CompteEpargne extends Compte {
+	@Column(name="taux")
 private double taux=0.03;
 
 
@@ -14,10 +17,14 @@ public CompteEpargne() {
 	
 }
 
-public CompteEpargne(int numCompte, double solde, Date dateOuverture,double taux) {
-	super(numCompte, solde, dateOuverture);
+
+public CompteEpargne(int numCompte, double solde, Date dateOuverture,
+		Client client,double taux) {
+	super(numCompte, solde, dateOuverture, client);
 	this.taux=taux;
 }
+
+
 /**
  * getters et setters
  * @return

@@ -2,25 +2,31 @@ package fr.adaming.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+@Entity(name="compteCourantBean")
+@Table(name="comptesCourants")
 public class CompteCourant extends Compte {
+	@Column(name="decouvert")
 private double decouvert=1000;
-private Client client;
+	
 
 
 
 /**
  * Constructeur
  */
-public CompteCourant() {
-	super();
-}
-public CompteCourant(int numCompte, double solde, Date dateOuverture,double decouvert, Client client) {
-	super(numCompte, solde, dateOuverture);
-	this.decouvert=decouvert;
-	this.client=client;
-	
-}
 
+	public CompteCourant() {
+		super();
+		
+	}
+	public CompteCourant(int numCompte, double solde, Date dateOuverture,
+			Client client, double decouvert) {
+		super(numCompte, solde, dateOuverture, client);
+		this.decouvert=decouvert;
+	}
 /**
  * getters et setters
  * @return
@@ -28,18 +34,21 @@ public CompteCourant(int numCompte, double solde, Date dateOuverture,double deco
 public double getDecouvert() {
 	return decouvert;
 }
+
 public void setDecouvert(double decouvert) {
 	this.decouvert = decouvert;
 }
-public Client getClient() {
-	return client;
-}
-public void setClient(Client client) {
-	this.client = client;
-}
+
+
+/**
+ * toString
+ */
 @Override
 public String toString() {
-	return "CompteCourant [decouvert=" + decouvert + ", client=" + client + "]";
+	return "CompteCourant [decouvert=" + decouvert + "]";
+}
+
+
 }
 
 
@@ -55,4 +64,4 @@ public String toString() {
 
 
 
-}
+
