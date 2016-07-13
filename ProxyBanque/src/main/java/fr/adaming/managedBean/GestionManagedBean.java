@@ -9,35 +9,33 @@ import javax.faces.bean.SessionScoped;
 import fr.adaming.model.Client;
 import fr.adaming.service.IGestionClientService;
 
-@ManagedBean(name = "gestionMB")
+@ManagedBean(name="gestionMB")
 @SessionScoped
 public class GestionManagedBean implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	////
 	@ManagedProperty(value = "#{gestionClientServiceBean}")
 	IGestionClientService gestionService;
 	
 	private Client cl;
 
+	////
 	public Client getCl() {
 		return cl;
 	}
-
 	public void setCl(Client cl) {
 		this.cl = cl;
 	}
-
 	public IGestionClientService getGestionService() {
 		return gestionService;
 	}
-
 	public void setGestionService(IGestionClientService gestionService) {
 		this.gestionService = gestionService;
 	}
 
-	@Override
-	public String toString() {
-		return "GestionManagedBean [gestionService=" + gestionService + ", cl="
-				+ cl + "]";
-	}
+	////
 	public void ajouter(){
 		gestionService.ajouterClient(cl);
 	}
