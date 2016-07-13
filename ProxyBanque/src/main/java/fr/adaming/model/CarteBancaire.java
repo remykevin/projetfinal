@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="carteBancaireBean")
@@ -24,6 +26,12 @@ public class CarteBancaire implements Serializable {
 	private int numero;
 	@Column(name="premier")
 	private boolean premier;
+	
+	////
+	/*Liaison avec Client*/
+	@OneToOne(mappedBy="carteBancaireClient")
+	@JoinColumn(name="ClientID", referencedColumnName="id_client")
+	private Client client;
 	
 	////
 	public CarteBancaire() {
@@ -59,6 +67,13 @@ public class CarteBancaire implements Serializable {
 	}
 	public void setPremier(boolean premier) {
 		this.premier = premier;
+	}
+	
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 	////

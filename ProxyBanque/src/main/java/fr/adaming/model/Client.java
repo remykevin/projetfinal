@@ -2,11 +2,15 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="clientBean")
@@ -32,6 +36,28 @@ public class Client implements Serializable {
 	private String ville;
 	@Column(name="telephone")
 	private String telephone;
+	
+	////
+	/*Liaison avec Agence*/
+	@ManyToOne
+	@JoinColumn(name="AgenceID", referencedColumnName="id_agence")
+	private Agence agence;
+	/*Liaison avec Conseiller*/
+	@ManyToOne
+	@JoinColumn(name="ConseillerID", referencedColumnName="id_conseiller")
+	private Conseiller conseiller;
+	/*Liaison avec CarteBancaire*/
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="carteID", referencedColumnName="id_carte")
+	private CarteBancaire carteBancaireClient;
+	/*Liaison avec Compte Courant*/
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="compteCouID", referencedColumnName="id_compteCou")
+	private CompteCourant compteCourantClient;
+	/*Liaison avec Compte Epargne*/
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="compteEpaID", referencedColumnName="id_compteEpa")
+	private CompteEpargne compteEpargneClient;
 	
 	////
 	public Client() {
@@ -101,6 +127,37 @@ public class Client implements Serializable {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
+	}
+	
+	public Agence getAgence() {
+		return agence;
+	}
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+	public CarteBancaire getCarteBancaireClient() {
+		return carteBancaireClient;
+	}
+	public void setCarteBancaireClient(CarteBancaire carteBancaireClient) {
+		this.carteBancaireClient = carteBancaireClient;
+	}
+	public CompteCourant getCompteCourantClient() {
+		return compteCourantClient;
+	}
+	public void setCompteCourantClient(CompteCourant compteCourantClient) {
+		this.compteCourantClient = compteCourantClient;
+	}
+	public CompteEpargne getCompteEpargneClient() {
+		return compteEpargneClient;
+	}
+	public void setCompteEpargneClient(CompteEpargne compteEpargneClient) {
+		this.compteEpargneClient = compteEpargneClient;
 	}
 	
 	////

@@ -1,17 +1,21 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="gerantBean")
 @Table(name="gerants")
-public class Gerant extends Conseiller implements Serializable {
+public class Gerant implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,6 +28,15 @@ public class Gerant extends Conseiller implements Serializable {
 	private String nom;
 	@Column(name="mdp_gerant")
 	private String password;
+	
+	////
+	/*Liaison avec Agence*/
+	@OneToOne(mappedBy="gerantAgence")
+	@JoinColumn(name="AgenceID", referencedColumnName="id_agence")
+	private Agence agence;
+	/*Liaison avec Conseiller*/
+	@OneToMany(mappedBy="gerant")
+	private List<Conseiller> conseillerGerant;
 	
 	////
 	public Gerant() {
@@ -59,6 +72,19 @@ public class Gerant extends Conseiller implements Serializable {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Agence getAgence() {
+		return agence;
+	}
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+	public List<Conseiller> getConseillerGerant() {
+		return conseillerGerant;
+	}
+	public void setConseillerGerant(List<Conseiller> conseillerGerant) {
+		this.conseillerGerant = conseillerGerant;
 	}
 	
 	////
