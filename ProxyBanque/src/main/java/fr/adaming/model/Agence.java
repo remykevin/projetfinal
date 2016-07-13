@@ -21,9 +21,9 @@ public class Agence implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_agence")
 	private int id;
-	@Column(name="numero_identification")
+	@Column(name="numeroId")
 	private String numeroId;
-	@Column(name="date_création")
+	@Column(name="dateCreation")
 	private Date dateCreation;
 	
 	////

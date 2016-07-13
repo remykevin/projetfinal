@@ -20,17 +20,17 @@ public class Client implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_client")
 	private int id;
-	@Column(name="nom")
+	@Column(name="nom_client")
 	private String nom;
 	@Column(name="prenom")
 	private String prenom;
 	@Column(name="adresse")
 	private String adresse;
-	@Column(name="CP")
+	@Column(name="codePostal")
 	private String codePostal;
 	@Column(name="ville")
 	private String ville;
-	@Column(name="tel")
+	@Column(name="telephone")
 	private String telephone;
 	
 	////
