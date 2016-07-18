@@ -27,7 +27,7 @@ public class GestionManagedBean implements Serializable{
 
 	////
 	
-	
+	//Constructeur avec tout les param
 	public GestionManagedBean(Client cl, Conseiller co,
 			IGestionClientService gestionClientService,
 			IGestionTacheService gestionTacheService) {
@@ -37,7 +37,7 @@ public class GestionManagedBean implements Serializable{
 		this.gestionClientService = gestionClientService;
 		this.gestionTacheService = gestionTacheService;
 	}
-	//Constructeur
+	//Constructeur vide
 	public GestionManagedBean() {
 		this.cl=new Client();
 	}
