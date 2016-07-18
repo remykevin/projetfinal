@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Affichage</title>
+	</h:head>
+
+	<h:body>
+		<div align="center">
+			<p:spacer height="10"/>
+			<p:separator>
+				<h2>Liste des Clients</h2>
+				<h:form>
+					<h:commandButton action="#{gestionMB.getUserMB}" value="Valider"/>
+				</h:form>
+			</p:separator>
+		</div>
+		<p:dataTable var="users" value="#{gestionMB.listeClients}">
+		
+   			<p:column headerText="Id">
+        		<h:outputText value="#{clients.id}" />
+    		</p:column>
+
+	    	<p:column headerText="Nom">
+	        	<h:outputText value="#{clients.nom}" />
+	    	</p:column>
+	
+	    	<p:column headerText="Prenom">
+	       	 	<h:outputText value="#{clients.prenom}" />
+	   	 	</p:column>
+	
+	    	<p:column headerText="Adresse">
+	        	<h:outputText value="#{clients.adresse}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Code Postal">
+	        	<h:outputText value="#{clients.codePostal}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Ville">
+	        	<h:outputText value="#{clients.ville}" />
+	    	</p:column>
+	    	
+	    	<p:column headerText="Telephone">
+	        	<h:outputText value="#{clients.telephone}" />
+	    	</p:column>
+	    	
+		</p:dataTable>
+		
+		<h:form>
+			<p:breadCrumb>
+				<p:menuitem value="Accueil" url="accueil.xhtml"/>
+				<p:menuitem value="Deconnexion" url="login.xhtml"/>
+			</p:breadCrumb>
+		</h:form>
+	</h:body>
+
+</html>

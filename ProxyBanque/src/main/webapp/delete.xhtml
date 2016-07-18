@@ -10,28 +10,31 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
-		<title>Login</title>
+		<title>Suppression</title>
 	</h:head>
 
 	<h:body>
 		<div align="center">
-			<h2>Identification</h2>
+			<h2>Supprimer un Client</h2>
 			<h:form>
 				<h:messages style="color:blue"/>
 				<h:panelGrid columns="3">
 					
-					Entrer votre identifiant :
-					<h:inputText id="nom" value="#{gestionMB.co.nom}" required="true"/>
-					<h:message for="nom" style="color:red"/>
-					
-					Entrer votre password :
-					<h:inputSecret id="password" value="#{gestionMB.co.password}" required="true"/>
-					<h:message for="password" style="color:red"/>
+					Entrer l'id :
+					<h:inputText id="id" value="#{gestionMB.cl.id}" required="true"/>
+					<h:message for="id" style="color:red"/>
 					
 				</h:panelGrid>
-				<h:commandButton action="#{gestionMB.ifExistMB}" value="Valider"/>
+				<h:commandButton action="#{gestionMB.deleteMB}" value="Valider"/>
 			</h:form>
 		</div>
+		
+		<h:form>
+			<p:breadCrumb>
+				<p:menuitem value="Accueil" url="accueil.xhtml"/>
+				<p:menuitem value="Deconnexion" url="login.xhtml"/>
+			</p:breadCrumb>
+		</h:form>
 	</h:body>
 
 </html>

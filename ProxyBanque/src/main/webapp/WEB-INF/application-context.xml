@@ -16,10 +16,8 @@
 	<!-- activer l'auto scan des composants (beans) -->
 	<context:component-scan base-package="fr"/>
 	
-	
 	<!-- localisation du fichier de proprietes : jdbc.properties -->
 	<context:property-placeholder location="classpath*:baseDonne.properties"/>
-	
 
 	<!-- bean du dataSource -->
 	<bean id="datasourceBean"
@@ -42,12 +40,8 @@
 	      <!-- les classes annotées -->
 	      <property name="packagesToScan" >     
 	      		<value>fr.adaming.model</value>      		      		 		
-	      </property>
-	      
-	      
-	      		
-	      		
-	      		
+	      </property>  
+	      			      			      		
 	      <!-- proprietes d'hibernate -->
 	      <property name="hibernateProperties">
 	      	<props>
