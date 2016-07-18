@@ -19,15 +19,15 @@
 
 
 	<!-- Localisation du fichier sgbd.properties-->
-	<context:property-placeholder location="classpath*:sgbd.properties" />
+	<context:property-placeholder location="classpath*:jdbc.properties" />
 
 
 	<!-- Définition du dataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="driverClassName" value="${db.driver}" />
-		<property name="url" value="${db.url}" />
-		<property name="username" value="${db.user}" />
-		<property name="password" value="${db.password}" />
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
 	</bean>
 
 	<!-- Définition du sessionFactory avec ref au bean dataSource -->
@@ -36,9 +36,9 @@
 		<property name="packagesToScan" value="fr.adaming.model" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">${db.hibernate.dialect}</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">${jdbc.hibernate.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${jdbc.hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${jdbc.hibernate.show_sql}</prop>
 			</props>
 		</property>
 	</bean>
