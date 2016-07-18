@@ -40,6 +40,7 @@ public class GestionManagedBean implements Serializable{
 	//Constructeur vide
 	public GestionManagedBean() {
 		this.cl=new Client();
+		this.co=new Conseiller();
 	}
 
 	////
