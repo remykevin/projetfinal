@@ -75,7 +75,7 @@ public class GestionManagedBean implements Serializable{
 	////
 	public void addMB(){
 		System.out.println("je suis arrivé dans le managed bean");
-		gestionClientService.ajouterClient(cl);		
+		gestionClientService.ajouterClient(cl);;		
 	}
 	public void updateMB(){
 		gestionClientService.modifierClient(cl);;
