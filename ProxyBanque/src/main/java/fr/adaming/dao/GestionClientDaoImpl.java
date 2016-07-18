@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.Client;
 @Repository
-@Transactional
+
 public class GestionClientDaoImpl implements IGestionClientDao{
 	@Autowired 
 	private SessionFactory sessionFactory;
@@ -25,6 +25,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 	}
 
 	@Override
+	@Transactional
 	public void ajouterClient(Client client) {
 		Session session = sessionFactory.openSession();
 		session.save(client);
