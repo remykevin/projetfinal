@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
 @Entity(name="compteEpargneBean")
 @Table(name="comptesEpargnes")
 @DiscriminatorValue (value="compteEpargne")
-public class CompteEpargne extends Compte implements Serializable {
+public class CompteEpargne implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,6 +25,12 @@ public class CompteEpargne extends Compte implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_compteEpa")
 	private int id;
+	@Column(name="numCompte")
+	private int numCompte;
+	@Column(name="solde")
+	private double solde;
+	@Column(name="dateOuverture")
+	private Date dateOuverture;
 	@Column(name="taux")
 	private double taux=0.03;
 
@@ -37,14 +44,24 @@ public class CompteEpargne extends Compte implements Serializable {
 	public CompteEpargne() {
 		super();
 	}
-	public CompteEpargne(double taux) {
+	public CompteEpargne(int numCompte, double solde, Date dateOuverture,
+			double taux, Client client) {
 		super();
+		this.numCompte = numCompte;
+		this.solde = solde;
+		this.dateOuverture = dateOuverture;
 		this.taux = taux;
+		this.client = client;
 	}
-	public CompteEpargne(int id, double taux) {
+	public CompteEpargne(int id, int numCompte, double solde,
+			Date dateOuverture, double taux, Client client) {
 		super();
 		this.id = id;
+		this.numCompte = numCompte;
+		this.solde = solde;
+		this.dateOuverture = dateOuverture;
 		this.taux = taux;
+		this.client = client;
 	}
 
 	////
@@ -53,6 +70,24 @@ public class CompteEpargne extends Compte implements Serializable {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getNumCompte() {
+		return numCompte;
+	}
+	public void setNumCompte(int numCompte) {
+		this.numCompte = numCompte;
+	}
+	public double getSolde() {
+		return solde;
+	}
+	public void setSolde(double solde) {
+		this.solde = solde;
+	}
+	public Date getDateOuverture() {
+		return dateOuverture;
+	}
+	public void setDateOuverture(Date dateOuverture) {
+		this.dateOuverture = dateOuverture;
 	}
 	public double getTaux() {
 		return taux;
@@ -71,6 +106,8 @@ public class CompteEpargne extends Compte implements Serializable {
 	////
 	@Override
 	public String toString() {
-		return "CompteEpargne [id=" + id + ", taux=" + taux + "]";
+		return "CompteEpargne [id=" + id + ", numCompte=" + numCompte
+				+ ", solde=" + solde + ", dateOuverture=" + dateOuverture
+				+ ", taux=" + taux + ", client=" + client + "]";
 	}
 }
