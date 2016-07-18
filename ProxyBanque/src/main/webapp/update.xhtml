@@ -54,35 +54,35 @@
 				<h:panelGrid columns="3">
 					
 					Entrer l'id du client :
-					<h:inputText id="id" value="#{gestionMB.cl.id}" required="true"/>
+					<h:inputText id="id" value="#{gestionMB.client.id}" required="true"/>
 					<h:message for="id" style="color:red"/>
 					
 					Entrer un nouveau nom :
-					<h:inputText id="nom" value="#{gestionMB.cl.nom}" required="true"/>
+					<h:inputText id="nom" value="#{gestionMB.client.nom}" required="true"/>
 					<h:message for="nom" style="color:red"/>
 					
 					Entrer un nouveau prenom :
-					<h:inputText id="prenom" value="#{gestionMB.cl.prenom}" required="true"/>
+					<h:inputText id="prenom" value="#{gestionMB.client.prenom}" required="true"/>
 					<h:message for="prenom" style="color:red"/>
 					
 					Entrer une nouvelle adresse :
-					<h:inputText id="adresse" value="#{gestionMB.cl.adresse}" required="true"/>
+					<h:inputText id="adresse" value="#{gestionMB.client.adresse}" required="true"/>
 					<h:message for="adresse" style="color:red"/>
 					
 					Entrer un nouveau code postal :
-					<h:inputText id="codePostal" value="#{gestionMB.cl.codePostal}" required="true"/>
+					<h:inputText id="codePostal" value="#{gestionMB.client.codePostal}" required="true"/>
 					<h:message for="codePostal" style="color:red"/>
 					
 					Entrer une nouvelle ville :
-					<h:inputText id="ville" value="#{gestionMB.cl.ville}" required="true"/>
+					<h:inputText id="ville" value="#{gestionMB.client.ville}" required="true"/>
 					<h:message for="ville" style="color:red"/>
 					
 					Entrer un nouveau telephone :
-					<h:inputText id="telephone" value="#{gestionMB.cl.telephone}" required="true"/>
+					<h:inputText id="telephone" value="#{gestionMB.client.telephone}" required="true"/>
 					<h:message for="telephone" style="color:red"/>
 					
 				</h:panelGrid>
-				<h:commandButton action="#{gestionMB.updateMB}" value="Valider"/>
+				<h:commandButton action="#{gestionMB.updateMB()}" value="Modifier" update="@all"/>
 			</h:form>
 		</div>
 		

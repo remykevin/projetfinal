@@ -54,11 +54,11 @@
 				<h:panelGrid columns="3">
 					
 					Entrer l'id :
-					<h:inputText id="id" value="#{gestionMB.cl.id}" required="true"/>
+					<h:inputText id="id" value="#{gestionMB.client.id}" required="true"/>
 					<h:message for="id" style="color:red"/>
 					
 				</h:panelGrid>
-				<h:commandButton action="#{gestionMB.deleteMB}" value="Valider"/>
+				<h:commandButton action="#{gestionMB.deleteMB()}" value="Supprimer" update="@all"/>
 			</h:form>
 		</div>
 		

@@ -54,15 +54,15 @@
 				<h:panelGrid columns="3">
 					
 					Entrer votre identifiant :
-					<h:inputText id="nom" value="#{gestionMB.co.nom}" required="true"/>
+					<h:inputText id="nom" value="#{gestionMB.conseiller.nom}" required="true"/>
 					<h:message for="nom" style="color:red"/>
 					
 					Entrer votre password :
-					<h:inputSecret id="password" value="#{gestionMB.co.password}" required="true"/>
+					<h:inputSecret id="password" value="#{gestionMB.conseiller.password}" required="true"/>
 					<h:message for="password" style="color:red"/>
 					
 				</h:panelGrid>
-				<h:commandButton action="#{gestionMB.ifExistMB}" value="Valider"/>
+				<h:commandButton action="#{gestionMB.ifExistMB()}" value="Connection"/>
 			</h:form>
 		</div>
 	</h:body>

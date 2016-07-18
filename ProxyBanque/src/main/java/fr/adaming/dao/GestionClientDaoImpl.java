@@ -1,7 +1,8 @@
 package fr.adaming.dao;
 
+import java.util.List;
+
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 
 @Repository
 @Transactional
@@ -27,50 +29,66 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 
 	////
 	@Override
-	public void ajouterClient(Client client) {
+	public int ifConseillerExistDao(Conseiller conseiller) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlReq = "SELECT COUNT(id) FROM conseillerBean AS e WHERE e.nom=:nom AND e.password=:password";
+		Query query = session.createSQLQuery(hqlReq);
+		query.setString("nom", conseiller.getNom());
+		query.setString("password", conseiller.getPassword());
+		
+		int rs = query.executeUpdate();	
+		
+		return rs;
+	}
+	
+	@Override
+	public void ajouterClientDao(Client client) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(client);		
 	}
 
 	@Override
-	public void supprimmerClient(Client client) {
+	public void modifierClientDao(Client client) {
 		
 		Session session = sessionFactory.getCurrentSession();
-		String hqlReq="delete clientBean  where id =:id1";
-		Query query=session.createQuery(hqlReq);
-		query.setParameter("id1", client.getId());
-		query.executeUpdate();
 		
+		String hqlReq = "UPDATE FROM clientBean AS e WHERE e.id = :id";
+		Query query = session.createQuery(hqlReq);
+		query.setInteger("id", client.getId());
+		
+		int rowsUpdated = query.executeUpdate();
+	}
+	
+	@Override
+	public void supprimmerClientDao(Client client) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		String hqlReq = "DELETE FROM clientBean AS e WHERE e.id = :id";	
+		Query query = session.createQuery(hqlReq);
+		query.setInteger("id", client.getId());
+		
+		int rowsDeleted = query.executeUpdate();
 	}
 
 	@Override
-	public void modifierClient(Client client) {
+	public List<Client> afficherClientDao() {
 		
+		//ouvrir une session
 		Session session = sessionFactory.getCurrentSession();
-		String hqlReq="update clientBean set nom=:nom1, prenom= :prenom1 , codePostal=:cp1,adresse=:adresse1,ville=:ville1,"
-				+ " telephone=:telephone1 "+ " where id =:id1";
-		Query query=session.createQuery(hqlReq);
-		query.setParameter("nom1", client.getNom());
-		query.setParameter("prenom1", client.getPrenom());
-		query.setParameter("cp1", client.getCodePostal());
-		query.setParameter("adresse1", client.getAdresse());
-		query.setParameter("ville1", client.getVille());
-		query.setParameter("telephone1", client.getTelephone());	
-		query.setParameter("id1", client.getId());
-		query.executeUpdate();
-		
+				
+		//declaration de la requete
+		String hqlreq = "FROM clientBean AS e ORDER BY e.nom ASC";
+		Query query = session.createQuery(hqlreq);
+				
+		//pagination
+		query.setFirstResult(0);
+		query.setMaxResults(50); //maximum d'affichage de la BD (ici 1 seul employe)
+		List<Client> listclient = query.list();
+				
+		return listclient;
 	}
-
-	@Override
-	public Client afficherClientParId(int idClient) {
-		
-		Session session = sessionFactory.getCurrentSession();
-		String sqlReq="select * from clients  where id =:id1 ";
-		SQLQuery query=session.createSQLQuery(sqlReq);
-		query.addEntity(Client.class);
-		query.setParameter("id1", idClient);
-		return (Client) query.uniqueResult();
-	}
-
 }

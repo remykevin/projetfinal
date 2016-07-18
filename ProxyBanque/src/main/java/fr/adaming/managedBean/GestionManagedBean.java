@@ -1,6 +1,7 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -18,44 +19,38 @@ public class GestionManagedBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	////
-	private Client cl;
-	private Conseiller co;
-	@ManagedProperty(value="#{gestionClientService}")
+	private Client client;
+	private List<Client> listeClient;
+	private Conseiller conseiller;
+	@ManagedProperty(value="#{gestionClientServiceBean}")
 	IGestionClientService gestionClientService;
-	@ManagedProperty(value="#{gestionTacheService}")
+	@ManagedProperty(value="#{gestionTacheServiceBean}")
 	IGestionTacheService gestionTacheService;
 
 	////
-	
-	//Constructeur avec tout les param
-	public GestionManagedBean(Client cl, Conseiller co,
-			IGestionClientService gestionClientService,
-			IGestionTacheService gestionTacheService) {
-		super();
-		this.cl = cl;
-		this.co = co;
-		this.gestionClientService = gestionClientService;
-		this.gestionTacheService = gestionTacheService;
-	}
-	//Constructeur vide
 	public GestionManagedBean() {
-		this.cl=new Client();
-		this.co=new Conseiller();
+		this.client = new Client();
+		this.conseiller = new Conseiller();
 	}
 
 	////
-	public Client getCl() {
-		return cl;
+	public Client getClient() {
+		return client;
 	}
-	public void setCl(Client cl) {
-		this.cl = cl;
+	public void setClient(Client client) {
+		this.client = client;
 	}
-
-	public Conseiller getCo() {
-		return co;
+	public List<Client> getListeClient() {
+		return listeClient;
 	}
-	public void setCo(Conseiller co) {
-		this.co = co;
+	public void setListeClient(List<Client> listeClient) {
+		this.listeClient = listeClient;
+	}
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
 	}
 
 	public IGestionClientService getGestionClientService() {
@@ -64,7 +59,6 @@ public class GestionManagedBean implements Serializable{
 	public void setGestionClientService(IGestionClientService gestionClientService) {
 		this.gestionClientService = gestionClientService;
 	}
-
 	public IGestionTacheService getGestionTacheService() {
 		return gestionTacheService;
 	}
@@ -73,16 +67,40 @@ public class GestionManagedBean implements Serializable{
 	}
 
 	////
-	public void addMB(){
-		gestionClientService.ajouterClient(cl);
+	public String ifExistMB() 
+	{
+		int verif = gestionClientService.ifConseillerExistService(conseiller);
+		
+		if(verif == 1)
+		{
+			return "succes";
+		}
+		else
+		{
+			return "echec";
+		}
 	}
-	public void updateMB(){
-		gestionClientService.modifierClient(cl);;
+	public String addMB(){
+		
+		gestionClientService.ajouterClientService(client);
+		return "add";
 	}
-	public void deleteMB(){
-		gestionClientService.supprimmerClient(cl);;
+	
+	public String updateMB(){
+		
+		gestionClientService.modifierClientService(client);
+		return "update";
 	}
-	public void getById(int id){
-		cl= gestionClientService.afficherClientParId(id);
+	
+	public String deleteMB(){
+		
+		gestionClientService.supprimmerClientService(client);
+		return "delete";
+	}
+	
+	public String getClientMB(){
+		
+		listeClient = gestionClientService.afficherClientService();
+		return "affiche";
 	}
 }
