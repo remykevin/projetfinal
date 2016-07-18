@@ -27,7 +27,7 @@ public class GestionClientService implements IGestionClientService {
 	////
 	@Override
 	public int ifConseillerExistService(Conseiller conseiller) {
-		
+
 		return gestionClientDao.ifConseillerExistDao(conseiller);
 	}
 	
