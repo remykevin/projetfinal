@@ -78,7 +78,7 @@
 					<h:message for="telephone" style="color:red"/>
 					
 				</h:panelGrid>
-				<h:commandButton action="#{gestionMB.addMB(gestionMB.cl)}" value="Valider"/>
+				<h:commandButton update="@all" value="ajouter" action="#{gestionMB.addMB()}" />
 			</h:form>
 		</div>
 		

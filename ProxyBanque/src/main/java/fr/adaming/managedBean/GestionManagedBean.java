@@ -20,23 +20,23 @@ public class GestionManagedBean implements Serializable{
 	////
 	private Client cl;
 	private Conseiller co;
-	@ManagedProperty(value="#{gestionClientService}")
+	@ManagedProperty(value="#{gestionClientServiceBean}")
 	IGestionClientService gestionClientService;
-	@ManagedProperty(value="#{gestionTacheService}")
+	@ManagedProperty(value="#{gestionTacheServiceBean}")
 	IGestionTacheService gestionTacheService;
 
 	////
 	
 	//Constructeur avec tout les param
-	public GestionManagedBean(Client cl, Conseiller co,
-			IGestionClientService gestionClientService,
-			IGestionTacheService gestionTacheService) {
-		super();
-		this.cl = cl;
-		this.co = co;
-		this.gestionClientService = gestionClientService;
-		this.gestionTacheService = gestionTacheService;
-	}
+	//public GestionManagedBean(Client cl, Conseiller co,
+	//		IGestionClientService gestionClientService,
+	//		IGestionTacheService gestionTacheService) {
+	//	super();
+	//	this.cl = cl;
+	//	this.co = co;
+	//	this.gestionClientService = gestionClientService;
+	//	this.gestionTacheService = gestionTacheService;
+//	}
 	//Constructeur vide
 	public GestionManagedBean() {
 		this.cl=new Client();
@@ -74,7 +74,8 @@ public class GestionManagedBean implements Serializable{
 
 	////
 	public void addMB(){
-		gestionClientService.ajouterClient(cl);
+		System.out.println("je suis arrivé dans le managed bean");
+		gestionClientService.ajouterClient(cl);		
 	}
 	public void updateMB(){
 		gestionClientService.modifierClient(cl);;

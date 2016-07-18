@@ -9,6 +9,7 @@ public class GestionClientService implements IGestionClientService {
 GestionClientDaoImpl gestionClient=new GestionClientDaoImpl();
 	@Override
 	public void ajouterClient(Client client) {
+		System.out.println("je suis arrivé dans la couche service");
 		gestionClient.ajouterClient(client);
 		
 	}
