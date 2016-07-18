@@ -3,6 +3,7 @@ package fr.adaming.managedBean;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import fr.adaming.model.Client;
@@ -19,11 +20,14 @@ public class GestionManagedBean implements Serializable{
 	////
 	private Client cl;
 	private Conseiller co;
-	
+	@ManagedProperty(value="#{gestionClientService}")
 	IGestionClientService gestionClientService;
+	@ManagedProperty(value="#{gestionTacheService}")
 	IGestionTacheService gestionTacheService;
 
 	////
+	
+	
 	public GestionManagedBean(Client cl, Conseiller co,
 			IGestionClientService gestionClientService,
 			IGestionTacheService gestionTacheService) {
@@ -33,7 +37,11 @@ public class GestionManagedBean implements Serializable{
 		this.gestionClientService = gestionClientService;
 		this.gestionTacheService = gestionTacheService;
 	}
-	
+	//Constructeur
+	public GestionManagedBean() {
+		this.cl=new Client();
+	}
+
 	////
 	public Client getCl() {
 		return cl;
