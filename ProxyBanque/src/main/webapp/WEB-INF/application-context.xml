@@ -18,7 +18,7 @@
 	
 	
 	<!-- localisation du fichier de proprietes : jdbc.properties -->
-	<context:property-placeholder location="classpath*:baseDonne.properties"/>
+	<context:property-placeholder location="classpath*:jdbc.properties"/>
 	
 
 	<!-- bean du dataSource -->

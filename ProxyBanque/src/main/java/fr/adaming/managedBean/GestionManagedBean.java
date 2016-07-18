@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import fr.adaming.model.Client;
+import fr.adaming.service.GestionClientService;
 import fr.adaming.service.IGestionClientService;
 
 @ManagedBean(name="gestionMB")
@@ -17,7 +18,7 @@ public class GestionManagedBean implements Serializable{
 
 	////
 	@ManagedProperty(value = "#{gestionClientServiceBean}")
-	IGestionClientService gestionService;
+	GestionClientService gestionService;
 	
 	private Client cl;
 
@@ -28,10 +29,10 @@ public class GestionManagedBean implements Serializable{
 	public void setCl(Client cl) {
 		this.cl = cl;
 	}
-	public IGestionClientService getGestionService() {
+	public GestionClientService getGestionService() {
 		return gestionService;
 	}
-	public void setGestionService(IGestionClientService gestionService) {
+	public void setGestionService(GestionClientService gestionService) {
 		this.gestionService = gestionService;
 	}
 
