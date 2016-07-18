@@ -80,6 +80,7 @@ public class GestionManagedBean implements Serializable{
 			return "echec";
 		}
 	}
+	
 	public String addMB(){
 		
 		gestionClientService.ajouterClientService(client);
