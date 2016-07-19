@@ -9,6 +9,8 @@ import javax.faces.bean.SessionScoped;
 
 import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
+import fr.adaming.service.GestionClientService;
+import fr.adaming.service.GestionTacheServiceImpl;
 import fr.adaming.service.IGestionClientService;
 import fr.adaming.service.IGestionTacheService;
 
@@ -22,15 +24,19 @@ public class GestionManagedBean implements Serializable{
 	private Client client;
 	private List<Client> listeClient;
 	private Conseiller conseiller;
-	@ManagedProperty(value="#{gestionClientServiceBean}")
-	IGestionClientService gestionClientService;
-	@ManagedProperty(value="#{gestionTacheServiceBean}")
-	IGestionTacheService gestionTacheService;
+//	
+//	@ManagedProperty(value="#{gestionClientServiceBean}")
+IGestionClientService gestionClientService;
+//	
+//	@ManagedProperty(value="#{gestionTacheServiceBean}")
+//	IGestionTacheService gestionTacheService;
 
 	////
 	public GestionManagedBean() {
 		this.client = new Client();
 		this.conseiller = new Conseiller();
+		gestionClientService=new GestionClientService();
+		
 	}
 
 	////
@@ -59,12 +65,12 @@ public class GestionManagedBean implements Serializable{
 	public void setGestionClientService(IGestionClientService gestionClientService) {
 		this.gestionClientService = gestionClientService;
 	}
-	public IGestionTacheService getGestionTacheService() {
-		return gestionTacheService;
-	}
-	public void setGestionTacheService(IGestionTacheService gestionTacheService) {
-		this.gestionTacheService = gestionTacheService;
-	}
+//	public IGestionTacheService getGestionTacheService() {
+//		return gestionTacheService;
+//	}
+//	public void setGestionTacheService(IGestionTacheService gestionTacheService) {
+//		this.gestionTacheService = gestionTacheService;
+//	}
 
 	////
 	public String ifExistMB() 
@@ -82,8 +88,9 @@ public class GestionManagedBean implements Serializable{
 	}
 	
 	public String addMB(){
-		
-		gestionClientService.ajouterClientService(client);
+		System.out.println("eeeeeeeeeeeeMB***************");
+		System.out.println(this.client);
+		gestionClientService.ajouterClientService(this.client);
 		return "add";
 	}
 	

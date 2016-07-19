@@ -45,7 +45,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 	
 	@Override
 	public void ajouterClientDao(Client client) {
-
+		System.out.println("************DAO***************");
 		Session session = sessionFactory.getCurrentSession();
 		session.save(client);		
 	}

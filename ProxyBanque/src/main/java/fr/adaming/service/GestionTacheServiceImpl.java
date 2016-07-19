@@ -14,7 +14,7 @@ import fr.adaming.model.CompteCourant;
 public class GestionTacheServiceImpl implements IGestionTacheService {
 
 	@Autowired
-	private IGestionTacheDao gestionTacheDao = new GestionTacheDaoImpl();
+	private IGestionTacheDao gestionTacheDao;
 	
 	////
 	public IGestionTacheDao getGestionTacheDao() {

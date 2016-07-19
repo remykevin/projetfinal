@@ -13,16 +13,16 @@ import fr.adaming.model.Conseiller;
 @Service("gestionClientServiceBean")
 public class GestionClientService implements IGestionClientService {
 	
-	@Autowired
-	private IGestionClientDao gestionClientDao = new GestionClientDaoImpl();
+	//@Autowired
+IGestionClientDao gestionClientDao;
 	
 	////
-	public IGestionClientDao getGestionClientDao() {
-		return gestionClientDao;
-	}
-	public void setGestionClientDao(IGestionClientDao gestionClientDao) {
-		this.gestionClientDao = gestionClientDao;
-	}
+//	public IGestionClientDao getGestionClientDao() {
+//		return gestionClientDao;
+//	}
+//	public void setGestionClientDao(IGestionClientDao gestionClientDao) {
+//		this.gestionClientDao = gestionClientDao;
+//	}
 
 	////
 	@Override
@@ -33,7 +33,8 @@ public class GestionClientService implements IGestionClientService {
 	
 	@Override
 	public void ajouterClientService(Client client) {
-		
+		gestionClientDao=new GestionClientDaoImpl();
+		System.out.println("***********Service***************");
 		gestionClientDao.ajouterClientDao(client);	
 	}
 
