@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.Compte;
 
-@Repository
+@Repository("gestionTacheDao")
 @Transactional
 public class GestionTacheDaoImpl implements IGestionTacheDao {
 

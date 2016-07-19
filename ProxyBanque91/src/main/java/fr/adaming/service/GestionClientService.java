@@ -14,7 +14,8 @@ import fr.adaming.model.Conseiller;
 public class GestionClientService implements IGestionClientService {
 	
 	@Autowired
-	IGestionClientDao gestionClientDao ;
+	// IGestionClientDao gestionClientDao
+	private IGestionClientDao gestionClientDao = new GestionClientDaoImpl();
 	
 	////
 	public IGestionClientDao getGestionClientDao() {
@@ -33,7 +34,7 @@ public class GestionClientService implements IGestionClientService {
 	
 	@Override
 	public void ajouterClientService(Client client) {
-		System.out.println("***************je suis dans le service");
+		
 		gestionClientDao.ajouterClientDao(client);	
 	}
 

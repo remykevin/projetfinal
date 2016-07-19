@@ -33,7 +33,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		String hqlReq = "SELECT COUNT(id) FROM conseillerBean AS e WHERE e.nom_conseiller=:nom AND e.mdp_conseiller=:password";
+		String hqlReq = "SELECT COUNT(id) FROM conseillerBean AS e WHERE e.nom_conseiller = :nom AND e.mdp_conseiller = :password";
 		Query query = session.createSQLQuery(hqlReq);
 		query.setString("nom", conseiller.getNom());
 		query.setString("password", conseiller.getPassword());
@@ -45,7 +45,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 	
 	@Override
 	public void ajouterClientDao(Client client) {
-		System.out.println("***************je suis dans la DAO");
+		
 		Session session = sessionFactory.getCurrentSession();
 		session.save(client);		
 	}
@@ -55,7 +55,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		String hqlReq = "UPDATE FROM clientBean AS e WHERE e.id = :id";
+		String hqlReq = "UPDATE FROM clientBean AS e WHERE e.id_client = :id";
 		Query query = session.createQuery(hqlReq);
 		query.setInteger("id", client.getId());
 		
@@ -67,7 +67,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		String hqlReq = "DELETE FROM clientBean AS e WHERE e.id = :id";	
+		String hqlReq = "DELETE FROM clientBean AS e WHERE e.id_client = :id";	
 		Query query = session.createQuery(hqlReq);
 		query.setInteger("id", client.getId());
 		
@@ -81,7 +81,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		Session session = sessionFactory.getCurrentSession();
 				
 		//declaration de la requete
-		String hqlreq = "FROM clientBean AS e ORDER BY e.nom ASC";
+		String hqlreq = "FROM clientBean AS e ORDER BY e.nom_client ASC";
 		Query query = session.createQuery(hqlreq);
 				
 		//pagination
