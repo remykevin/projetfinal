@@ -165,6 +165,10 @@ public class Client implements Serializable {
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom
 				+ ", adresse=" + adresse + ", codePostal=" + codePostal
-				+ ", ville=" + ville + ", telephone=" + telephone + "]";
+				+ ", ville=" + ville + ", telephone=" + telephone + ", agence="
+				+ agence + ", conseiller=" + conseiller
+				+ ", carteBancaireClient=" + carteBancaireClient
+				+ ", compteCourantClient=" + compteCourantClient
+				+ ", compteEpargneClient=" + compteEpargneClient + "]";
 	}
 }

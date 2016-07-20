@@ -54,12 +54,16 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 	public void modifierClientDao(Client client) {
 		
 		Session session = sessionFactory.getCurrentSession();
+		Client cl1 = (Client) session.get(Client.class, client.getId());
 		
-		String hqlReq = "UPDATE FROM clientBean AS e WHERE e.id_client = :id";
-		Query query = session.createQuery(hqlReq);
-		query.setInteger("id", client.getId());
+		cl1.setNom(client.getNom());
+		cl1.setPrenom(client.getPrenom());
+		cl1.setAdresse(client.getAdresse());
+		cl1.setCodePostal(client.getCodePostal());
+		cl1.setVille(client.getVille());
+		cl1.setTelephone(client.getTelephone());
 		
-		int rowsUpdated = query.executeUpdate();
+		session.update(cl1);
 	}
 	
 	@Override
@@ -67,7 +71,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		String hqlReq = "DELETE FROM clientBean AS e WHERE e.id_client = :id";	
+		String hqlReq = "DELETE FROM clientBean AS e WHERE e.id = :id";	
 		Query query = session.createQuery(hqlReq);
 		query.setInteger("id", client.getId());
 		
@@ -81,7 +85,7 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		Session session = sessionFactory.getCurrentSession();
 				
 		//declaration de la requete
-		String hqlreq = "FROM clientBean AS e ORDER BY e.nom_client ASC";
+		String hqlreq = "FROM clientBean AS e";
 		Query query = session.createQuery(hqlreq);
 				
 		//pagination
