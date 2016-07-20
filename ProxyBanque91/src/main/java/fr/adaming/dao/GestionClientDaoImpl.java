@@ -3,6 +3,7 @@ package fr.adaming.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +34,21 @@ public class GestionClientDaoImpl implements IGestionClientDao{
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		String hqlReq = "SELECT COUNT(id) FROM conseillerBean AS e WHERE e.nom_conseiller = :nom AND e.mdp_conseiller = :password";
-		Query query = session.createSQLQuery(hqlReq);
-		query.setString("nom", conseiller.getNom());
-		query.setString("password", conseiller.getPassword());
+		String hqlReq = "SELECT * FROM conseillers AS e WHERE e.nom_conseiller = :nom AND e.mdp_conseiller = :password";
+		SQLQuery query = session.createSQLQuery(hqlReq);
+		query.addEntity(Conseiller.class);
+		query.setParameter("nom", conseiller.getNom());
+		query.setParameter("password", conseiller.getPassword());
 		
-		int rs = query.executeUpdate();	
-		
-		return rs;
+		List<Conseiller> rs = query.list();
+		if(rs.size()!=1)
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 	
 	@Override
